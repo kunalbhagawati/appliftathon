@@ -1,11 +1,32 @@
-var React = require('react');
-var App = require('./app/app.js');
-
 require('../css/app/main.css');
 
+var React = require('react');
+var Router = require('react-router').Router;
+var Route = require('react-router').Route;
+var Link = require('react-router').Link;
 
-React.render(<App/>, document.getElementById('app-container'));
+var Predict = require('./PredictApp/app')
+var Index = React.createClass({
+    render: function() {
+        return (
+            <div>
+                <Link to="predict"><button id="button-predict">Predict</button></Link>
+                <button id="button-infer">Infer</button>
+            </div>
+        );
+    }
+});
 
-//var Router = require('react-router').Router;
-//var Route = require('react-router').Route;
-//var Link = require('react-router').Link;
+var NoMatch = React.createClass({
+    render: function() {
+        return <h1>No match :p</h1>
+    }
+});
+
+React.render((
+  <Router>
+    <Route path="/" component={Index} />
+    <Route path="predict" component={Predict}/>
+    <Route path="*" component={NoMatch}/>
+  </Router>
+), document.getElementById('index-container'));

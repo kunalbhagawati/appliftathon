@@ -56,7 +56,7 @@ INSTALLED_APPS = (
 
 # PROJECT APPS
 INSTALLED_APPS += (
-    'probabilitise',
+    'predict',
 )
 
 
