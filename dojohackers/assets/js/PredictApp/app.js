@@ -20,21 +20,23 @@ module.exports = React.createClass({
         var firstLine,
             isValidFormat=true,
             file = $("#predict-input-file")[0].files[0],
+            predictionType = $('#predict-input-type').val(),
             fileReader = new FileReader();
 
-        fileReader.onload = function(e) {
-            var contents = e.target.result;
-            if (file.type != 'csv') {
-                isValidFormat = false
-            }
-            firstLine = contents.substr(1, contents.indexOf("\n"));
-        };
+        //fileReader.onload = function(e) {
+        //    var contents = e.target.result;
+        //    if (file.type != 'csv') {
+        //        isValidFormat = false
+        //    }
+        //    firstLine = contents.substr(1, contents.indexOf("\n"));
+        //};
         //fileReader.onloadend = function() {
         //    debugger;
         //};
-        fileReader.readAsText(file);
+        //fileReader.readAsText(file);
         var data = new FormData();
         data.append('sample_file', file);
+        data.append('prediction_type', predictionType);
         // attempt to populate the first row
         $.ajax({
             type: "POST",
@@ -61,10 +63,10 @@ module.exports = React.createClass({
                 <span className="btn btn-default btn-file">Browse
                     <input id="predict-input-file" type="file"/>
                 </span>
-                <div className="input-group">
-                    <span className="input-group-addon" id="predict-input-type">Prediction Type</span>
-                    <input name="predict-input-type" type="text" className="form-control input-sm"/>
-                </div>
+                <select id="predict-input-type">
+                    <option value="ExchangeBid">ExchangeBid</option>
+                    <option value="Outcome">Outcome</option>
+                </select>
                 <button className="btn-default" onClick={this.postFile}>Submit</button>
             </div>
         );
