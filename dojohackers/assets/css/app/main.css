@@ -1,6 +1,11 @@
-#app-container {
+#index-container {
     width: 100%;
     height:100%;
+    margin: 20px;
+}
+
+.index-row {
+    text-align: center;
 }
 
 .button-entry {
