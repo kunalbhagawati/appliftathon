@@ -15,18 +15,18 @@ Including another URLconf
 """
 from django.conf.urls import include, url
 from dojohackers.views import index_view
-from probabilitse.views import InferView
+from probabilitise.views import InferView
 
 urlpatterns = [
     url(r'^$', index_view)
 ]
 
-probabilitse_urls = [
+probabilitise_urls = [
     url(r'^$', InferView.as_view())
 ]
 
 api_urls = [
-    url(r'^infer/', include(probabilitse_urls))
+    url(r'^infer/', include(probabilitise_urls))
 ]
 
 urlpatterns += [
