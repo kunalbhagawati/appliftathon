@@ -1,3 +1,5 @@
 from django.db import models
 
-# Create your models here.
+
+class SampleFile(models.Model):
+    sample_file = models.FileField(upload_to='sample_files')

@@ -3,8 +3,20 @@ var $ = require('jQuery');
 
 
 module.exports = React.createClass({
-    postFile: function() {
-        $.ajax()
+    postFile: function(e) {
+        var data = new FormData();
+        data.append('sample_file', e.target.files[0]);
+        $.ajax({
+            type: "POST",
+            url: 'api/predict/',
+            data: data,
+            contentType: false,
+            processData: false,
+
+            success: function(response) {
+                console.log(response);
+            }
+        });
     },
 
     renderValuesForm: function() {
@@ -12,7 +24,7 @@ module.exports = React.createClass({
     },
 
     renderFileUploadField: function() {
-        return <input type="file" onchange={this.postFile} />;
+        return <input id="predict-input-file" type="file" onChange={this.postFile} />;
     },
 
     renderInputTypes: function() {

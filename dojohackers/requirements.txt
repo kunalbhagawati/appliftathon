@@ -1,3 +1,4 @@
+pandas
 appnope==0.1.0
 decorator==4.0.4
 Django==1.8.7
