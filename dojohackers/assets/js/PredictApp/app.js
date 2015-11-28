@@ -19,7 +19,7 @@ module.exports = React.createClass({
         self = this;
         var firstLine,
             isValidFormat=true,
-            file = $("#predict-input-file")[0].files[0],
+            file = e.target.files[0],
             fileReader = new FileReader();
 
         fileReader.onload = function(e) {
@@ -55,18 +55,11 @@ module.exports = React.createClass({
         return null;
     },
 
-    renderFileUploadField: function () {
+    renderFileUploadField: function() {
         return (
-            <div className="input-group-file row">
-                <span className="btn btn-default btn-file">Browse
-                    <input id="predict-input-file" type="file"/>
-                </span>
-                <div className="input-group">
-                    <span className="input-group-addon" id="predict-input-type">Prediction Type</span>
-                    <input name="predict-input-type" type="text" className="form-control input-sm"/>
-                </div>
-                <button className="btn-default" onClick={this.postFile}>Submit</button>
-            </div>
+            <span className="btn btn-default btn-file">Browse
+                <input id="predict-input-file" type="file" onChange={this.postFile} />
+            </span>
         );
     },
 
