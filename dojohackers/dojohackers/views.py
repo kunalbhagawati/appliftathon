@@ -1,5 +1,4 @@
-from django.http import HttpResponse
-from django.template import loader, RequestContext
+from django.shortcuts import render
 from django.views.decorators.http import require_http_methods
 
 
@@ -9,6 +8,4 @@ def index_view(request):
     Initializes the app
     """
 
-    template = loader.get_template('polls/index.html')
-    context = RequestContext(request, {})
-    return HttpResponse(template.render(context))
+    return render(request, 'dojohackers/index.html')

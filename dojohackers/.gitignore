@@ -1,5 +1,11 @@
 .idea/
 **/*/.idea/
+
+**/*.pyc
+*.pyc
+*__pycache__*
+__pycache__/
+**/*/__pycache__/
 .installed.cfg
 bin
 develop-eggs
