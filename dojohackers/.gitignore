@@ -17,3 +17,4 @@ src/*.egg-info
 lib
 lib64
 node_modules/
+webpack-stats.json
