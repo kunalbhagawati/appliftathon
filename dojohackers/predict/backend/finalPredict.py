@@ -90,5 +90,5 @@ def returnPredicted(predict_col, dataFilePath):
         X_test = test_set.as_matrix(columns=test_set.columns)
         y_test = predictFunction(_bid_11g_model_path, X_test)
     full_test_set[predict_col] = y_test.ravel()
-    print full_test_set.set_index('BidId')[predict_col].to_dict()
+    return full_test_set.set_index('BidId')[predict_col].to_dict()
 

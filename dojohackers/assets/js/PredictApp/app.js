@@ -1,9 +1,21 @@
 var React = require('react');
 var $ = require('jQuery');
+var _ = require('underscore');
+
+
+require('../../css/app/button.css');
 
 
 module.exports = React.createClass({
+    getInitialState: function() {
+        return {
+            is_input_file: true,
+            predictions: null
+        }
+    },
+
     postFile: function(e) {
+        self = this;
         var data = new FormData();
         data.append('sample_file', e.target.files[0]);
         $.ajax({
@@ -14,7 +26,9 @@ module.exports = React.createClass({
             processData: false,
 
             success: function(response) {
-                console.log(response);
+                self.setState({
+                    'predictions': response
+                });
             }
         });
     },
@@ -24,19 +38,36 @@ module.exports = React.createClass({
     },
 
     renderFileUploadField: function() {
-        return <input id="predict-input-file" type="file" onChange={this.postFile} />;
+
+        return (
+            <span className="btn btn-default btn-file">Browse
+                <input id="predict-input-file" type="file" onChange={this.postFile} />
+            </span>
+        );
     },
 
-    renderInputTypes: function() {
-        return (
-            <div>
-                {this.renderValuesForm()}
-                {this.renderFileUploadField()}
-            </div>
-        )
+    renderInputType: function() {
+        return this.state.is_input_file ?
+            <form id="form-send-file">{this.renderFileUploadField()}</form> :
+            <form id="form-send-fields">{this.renderValuesForm()}</form>;
+    },
+
+    renderPredictions: function() {
+        return (_.map(this.state.predictions, function(value, key, list) {
+                return <div><span>{key}</span><span>{value}</span></div>;
+            }));
+    },
+
+    renderContent: function() {
+        return this.state.predictions === null ? null : this.renderPredictions();
     },
 
     render: function() {
-        return this.renderInputTypes();
+        return (
+            <div>
+                {this.renderInputType()}
+                {this.renderContent()}
+            </div>
+        );
     }
 });
