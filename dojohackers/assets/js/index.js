@@ -12,9 +12,9 @@ var Infer = require('./InferApp/app');
 var Index = React.createClass({
     render: function() {
         return (
-            <div>
-                <Link to="predict"><button className="btn btn-default" id="button-predict">Predict</button></Link>
-                <Link to="infer"><button className="btn btn-default" id="button-infer">Infer</button></Link>
+            <div className="row index-row vertical-center">
+                <Link to="predict"><button className="btn btn-primary button-entry" id="button-predict">Predict</button></Link>
+                <Link to="infer"><button className="btn btn-primary  button-entry" id="button-infer">Infer</button></Link>
             </div>
         );
     }

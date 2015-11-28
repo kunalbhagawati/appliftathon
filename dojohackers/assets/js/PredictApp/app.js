@@ -16,8 +16,25 @@ module.exports = React.createClass({
 
     postFile: function(e) {
         self = this;
+        var firstLine,
+            isValidFormat=true,
+            file = e.target.files[0],
+            fileReader = new FileReader();
+
+        fileReader.onload = function(e) {
+            var contents = e.target.result;
+            if (file.type != 'csv') {
+                isValidFormat = false
+            }
+            firstLine = contents.substr(1, contents.indexOf("\n"));
+        };
+        //fileReader.onloadend = function() {
+        //    debugger;
+        //};
+        fileReader.readAsText(file);
         var data = new FormData();
-        data.append('sample_file', e.target.files[0]);
+        data.append('sample_file', file);
+        // attempt to populate the first row
         $.ajax({
             type: "POST",
             url: 'api/predict/',
@@ -38,7 +55,6 @@ module.exports = React.createClass({
     },
 
     renderFileUploadField: function() {
-
         return (
             <span className="btn btn-default btn-file">Browse
                 <input id="predict-input-file" type="file" onChange={this.postFile} />
