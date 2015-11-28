@@ -5,13 +5,16 @@ var Router = require('react-router').Router;
 var Route = require('react-router').Route;
 var Link = require('react-router').Link;
 
-var Predict = require('./PredictApp/app')
+var Predict = require('./PredictApp/app');
+var Infer = require('./InferApp/app');
+
+
 var Index = React.createClass({
     render: function() {
         return (
             <div>
-                <Link to="predict"><button id="button-predict">Predict</button></Link>
-                <button id="button-infer">Infer</button>
+                <Link to="predict"><button className="btn btn-default" id="button-predict">Predict</button></Link>
+                <Link to="infer"><button className="btn btn-default" id="button-infer">Infer</button></Link>
             </div>
         );
     }
@@ -27,6 +30,7 @@ React.render((
   <Router>
     <Route path="/" component={Index} />
     <Route path="predict" component={Predict}/>
+    <Route path="infer" component={Infer}/>
     <Route path="*" component={NoMatch}/>
   </Router>
 ), document.getElementById('index-container'));
