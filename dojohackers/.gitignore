@@ -1,6 +1,8 @@
 .idea/
 **/*/.idea/
 
+GIT_BAK/
+
 **/*.pyc
 *.pyc
 *__pycache__*
