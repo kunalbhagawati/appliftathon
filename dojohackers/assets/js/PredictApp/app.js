@@ -1,7 +1,7 @@
 var React = require('react');
 var $ = require('jQuery');
 var _ = require('underscore');
-
+var ReactDom = require('react-dom');
 
 require('../../css/app/button.css');
 require('../../css/app/predict/predict.less');
@@ -19,7 +19,6 @@ module.exports = React.createClass({
     postFile: function(e) {
         self = this;
 
-        // set spinner
         var spinner = '<div class="browser-screen-loading-content"> ' +
             '<div class="loading-dots dark-gray"> ' +
             '<i></i> ' +
@@ -122,7 +121,7 @@ module.exports = React.createClass({
                     {this.renderInputType()}
                 </div>
                 <hr className="dashed"/>
-                <div className="content-container row">
+                <div className="content-container row" id="content-container">
                     {this.renderContent()}
                 </div>
             </div>
