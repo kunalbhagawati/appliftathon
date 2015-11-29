@@ -74,21 +74,21 @@ module.exports = React.createClass({
     renderFileUploadField: function () {
         return (
             <div className="input-group-file row">
-                <span className="btn btn-default btn-file">Browse
+                <span className="btn btn-default btn-file form-control">Browse
                     <input id="predict-input-file" type="file"/>
                 </span>
-                <select id="predict-input-type">
+                <select className="form-control" id="predict-input-type">
                     <option value="ExchangeBid">ExchangeBid</option>
                     <option value="Outcome">Outcome</option>
                 </select>
-                <button className="btn-default" onClick={this.postFile}>Submit</button>
+                <button className="btn btn-default form-control" onClick={this.postFile}>Submit</button>
             </div>
         );
     },
 
     renderInputType: function() {
         return this.state.is_input_file ?
-            <form id="form-send-file">{this.renderFileUploadField()}</form> :
+            <form id="form-send-file" className="form-inline">{this.renderFileUploadField()}</form> :
             <form id="form-send-fields">{this.renderValuesForm()}</form>;
     },
 
