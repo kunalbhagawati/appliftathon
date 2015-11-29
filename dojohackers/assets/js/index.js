@@ -14,7 +14,6 @@ var Index = React.createClass({
         return (
             <div className="row index-row center-block vertical-center">
                 <Link to="predict"><button className="btn btn-primary button-entry" id="button-predict">Predict</button></Link>
-                <Link to="infer"><button className="btn btn-primary  button-entry" id="button-infer">Infer</button></Link>
             </div>
         );
     }
