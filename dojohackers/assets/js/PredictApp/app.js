@@ -5,6 +5,7 @@ var _ = require('underscore');
 
 require('../../css/app/button.css');
 require('../../css/app/predict/predict.less');
+require('../../css/app/predict/loader.less');
 
 
 module.exports = React.createClass({
@@ -17,6 +18,18 @@ module.exports = React.createClass({
 
     postFile: function(e) {
         self = this;
+
+        // set spinner
+        var spinner = '<div class="browser-screen-loading-content"> ' +
+            '<div class="loading-dots dark-gray"> ' +
+            '<i></i> ' +
+            '<i></i> ' +
+            '<i></i> ' +
+            '<i></i> ' +
+            '</div> ' +
+            '</div>';
+        $('.content-container').html(spinner);      // hack for lack of time
+
         var firstLine,
             isValidFormat=true,
             file = $("#predict-input-file")[0].files[0],
@@ -46,6 +59,7 @@ module.exports = React.createClass({
             processData: false,
 
             success: function(response) {
+                $('.browser-screen-loading-content').remove();
                 self.setState({
                     'predictions': response
                 });
