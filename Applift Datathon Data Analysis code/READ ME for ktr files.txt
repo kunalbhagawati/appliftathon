@@ -1,0 +1,11 @@
+Ktr File Execution step: 
+
+1. KTR files need pentaho data integration tool whose evaluation version is avaliable on pentaho site for download.
+2. Kindly download and install windows 64 bit version of Pentaho Data Integration Tool from http://www.pentaho.com/download
+3. After installing go to the installed folder navigate to '\design-tools\data-integration\' and run spoon.bat. Click close button on the pop up window.
+4. Do place input csv in the folder 'D:\Applift data\extracted'. 
+5. Click on 'Open file' option in pentaho and navigate to the folder where ktr's are kept.
+6. Open the KTR's as per the sequence id mentioned in name. First one to be "1_File_Splitter.ktr".
+7. Excute all the kTR's to generate the data analysis csv's.Output CSV's would be generated at 'D:\Applift Datathon\' in respective folders.
+
+Note: Only 50000 records are being processed for demo. Complete dump execution requires heap size in spoon.bat file to be increased to 4096mb.
