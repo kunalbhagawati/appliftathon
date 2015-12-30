@@ -93,19 +93,27 @@ module.exports = React.createClass({
 
     renderPredictions: function () {
         return (
-            <div className="prediction-row-container row">
-                <div className="prediction-header row">
-                    <span className="prediction-header-cell col-lg-1">Hash</span>
-                    <span className="prediction-header-cell col-lg-1">Value</span>
-                </div>
-                {_.map(this.state.predictions, function(value, key, list) {
-                    return (
-                        <div className="prediction-row row">
-                            <span className="prediction-key col-lg-1">{key}</span>
-                            <span className="prediction-value col-lg-1">{value}</span>
-                        </div>
-                    );
-                })}
+            <div className="table-responsive" id="prediction-results">
+                <table className="table-condensed table-hover table-condensed">
+                    <thead>
+                    <tr className="prediction-header row">
+                        <td className="prediction-header-cell col-md-6">Hash</td>
+                        <td className="prediction-header-cell col-md-6">Value</td>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {_.map(
+                        this.state.predictions, function (value, key, list) {
+                            return (
+                                <tr className="prediction-row row prediction-row-container">
+                                    <td className="prediction-key col-md-6">{key}</td>
+                                    <td className="prediction-value col-md-6">{value}</td>
+                                </tr>
+                            );
+                        }
+                    )}
+                    </tbody>
+                </table>
             </div>
         );
     },
